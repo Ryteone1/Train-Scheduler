@@ -31,7 +31,7 @@ $("#add-train-btn").on("click", function(event) {
   var trainName = $("#train-name-input").val().trim();
   var trainDestination = $("#destination-input").val().trim();
   var trainFrequency = $("#frequency-input").val().trim();
-  var firstTrainTime = moment($("#first-train-time-input").val().trim(), "hh:mm");
+  var firstTrainTime = moment($("#first-train-time-input").val().trim(), "DD/MM/YY").format("X");
   
 
   // Creates local "temporary" object for holding train data
@@ -88,6 +88,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // Current Time
   var currentTime = moment();
+  $("#current-time").text((currentTime).format("hh:mm"));
   console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
   // Difference between the times
