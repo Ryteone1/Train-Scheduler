@@ -77,28 +77,10 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   console.log(firstTrainTime);
   console.log(trainFrequency);
 
-  // Prettify the train start
-  var trainStartPretty = moment.unix(firstTrainTime).format("MM/DD/YY");
-
-  // Calculate the months worked using hardcore math
-  // To calculate the months worked
-  var placeholder = moment().diff(moment.unix(empStart, "X"), "months");
-
-  console.log(placeholder);
-
-  // Calculate the total billed rate
-  var nextTrainArrival = empMonths * empRate;
-  console.log(empBilled);
+  
 
   // Add each train's data into the table
   $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" +
-  trainStartPretty + "</td><td>" + placeholder + "</td><td>" + trainFrequency + "</td><td>" + nextTrainArrival + "</td></tr>");
+  firstTrainTime + "</td><td>" + trainFrequency + "</td></tr>");
 });
 
-// Example Time Math
-// -----------------------------------------------------------------------------
-// Assume Employee start date of January 1, 2015
-// Assume current date is March 1, 2016
-
-// We know that this is 15 months.
-// Now we will create code in moment.js to confirm that any attempt we use mets this test case
